@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
         className = "photo-list__image"
       />
 </div>
-      <div >
+      <div className="photo-list__user-details">
         <img
           src={profile}
           alt={`Photo ${username}`}
