@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
 	/* Insert React */
 	console.log("props", props);
-	const { id, location, imageSource, username, profile } = props;
+	const { id, location, urls, user } = props;
 
 	return (
 		<article
@@ -16,7 +16,7 @@ const PhotoListItem = (props) => {
 			<div>
 				<PhotoFavButton />
 				<img
-					src={imageSource}
+					src={urls.regular}
 					alt={`Photo ${id}`}
 					className="photo-list__image"
 				/>
@@ -24,12 +24,12 @@ const PhotoListItem = (props) => {
 			<div className="photo-list__user-details">
 				{" "}
 				<img
-					src={profile}
-					alt={`Photo ${username}`}
+					src={user.profile}
+					alt={`Photo ${user.username}`}
 					className="photo-list__user-profile"
 				/>
 			</div>
-			<div className="photo-list__user-info">{username}</div>
+			<div className="photo-list__user-info">{user.username}</div>
 			<div className="photo-list__user-location">
 				{location.city} {location.country}
 			</div>
