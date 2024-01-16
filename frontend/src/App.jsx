@@ -6,6 +6,8 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
+
+
   const sampleDataForPhotoListItem = {
     id: "1",
     location: {
@@ -17,9 +19,12 @@ const App = () => {
     profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
   };
 
+  const photos = new Array(3).fill(sampleDataForPhotoListItem);
+
   return (
     <div className="App">
-      <PhotoListItem {...sampleDataForPhotoListItem}/>
+{photos.map ((_,index) => (<PhotoListItem key={index} {...sampleDataForPhotoListItem}/> ))}
+
     </div>
   );
 };
