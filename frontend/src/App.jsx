@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
+
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
+  //const [selectedItems, setSelectedItems] = useState([]);
+
+  /*const handleToggleFavorite = (itemId) => {
+    setSelectedItems((prevSelectedItems) => {
+      if (prevSelectedItems.includes(itemId)) {
+        return prevSelectedItems.filter((id) => id !== itemId);
+      } else {
+        return [...prevSelectedItems, itemId];
+      }
+    });
+  };*/
 
 
   const sampleDataForPhotoListItem = {
@@ -21,10 +33,10 @@ const App = () => {
 
   const photos = new Array(3).fill(sampleDataForPhotoListItem);
 
+
   return (
     <div className="App">
-{photos.map ((_,index) => (<PhotoListItem key={index} {...sampleDataForPhotoListItem}/> ))}
-
+    {photos.map ((_,index) => (<PhotoListItem key={index} {...sampleDataForPhotoListItem}/> ))}
     </div>
   );
 };
