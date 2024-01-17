@@ -62,7 +62,7 @@ const PhotoList = () => {
 		<ul className="photo-list">
 			{/* Insert React */}
 			{sampleDataForPhotoList.map((element) => {
-				console.log("element being read", element);
+				console.log("Photo Item being read", element);
 				return (
 					<PhotoListItem
 						key={element.id}
