@@ -5,11 +5,14 @@ import FavBadge from './FavBadge';
 import TopicList from './TopicList';
 
 
-const TopNavigation = () => {
+const TopNavigation = ({topics}) => {
+	console.log("!!!!!! TOP NAVIGATION !!!!!! ");
+	console.log("Is Array?", Array.isArray(topics));
+	console.log("Topics--->:", topics);
   return (
 		<div className="top-nav-bar">
 			<span className="top-nav-bar__logo">PhotoLabs</span>
-			<TopicList />
+			<TopicList topics={topics} />
 			<FavBadge />
 		</div>
 	);

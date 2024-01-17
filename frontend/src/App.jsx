@@ -1,17 +1,28 @@
 //code for App.jsx
 import React, { useState } from "react";
 
-//import PhotoListItem from "./components/PhotoListItem";
-//import PhotoList from "components/PhotoList";
 import "./App.scss";
-//import TopNavigation from "components/TopNavigationBar";
 import HomeRoute from "routes/HomeRoute.jsx";
+import topics from "mocks/topics";
+import photos from "mocks/photos";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+	console.log("!AAAAAAAAAPPPPPPPPPP!");
+	console.log("TYPE OF topics:", typeof topics);
+	console.log("Is Array?", Array.isArray(topics));
+	console.log("Topics:", topics);
+	console.log("TYPE OF photos:", typeof photos);
+	console.log("Is Array?", Array.isArray(photos));
+	console.log("photos:", photos);
+
 	return (
 		<div className="App">
-			<HomeRoute />
+			<HomeRoute
+				topics={topics}
+				photos={photos}
+			/>
+			;
 		</div>
 	);
 };
