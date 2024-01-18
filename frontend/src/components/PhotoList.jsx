@@ -8,6 +8,8 @@ const PhotoList = ({
 	favouritePhotos,
 	toggleFavourite,
 	toggleFavBadge,
+	openModal,
+	closeModal,
 }) => {
 	console.log("!!!!!! PHOTOLIST  !!!!!! ");
 	console.log("---------------------------------------------------");
@@ -35,6 +37,10 @@ const PhotoList = ({
 		Array.isArray(toggleFavBadge)
 	);
 	console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
+	console.log("openModal", openModal);
+	console.log("openModal", typeof openModal);
+	console.log("closeModal", closeModal);
+	console.log("closeModal", typeof closeModal);
 
 	return (
 		<ul className="photo-list">
@@ -47,6 +53,8 @@ const PhotoList = ({
 						isFavourite={favouritePhotos.includes(photo.id)}
 						toggleFavourite={toggleFavourite}
 						toggleFavBadge={toggleFavBadge}
+						openModal={openModal}
+						closeModal={closeModal}
 					/>
 				);
 			})}

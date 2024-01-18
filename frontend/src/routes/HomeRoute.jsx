@@ -5,7 +5,7 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, openModal, closeModal }) => {
 	console.log("!!!!!! HOME ROUTE!!!!!! ");
 	//console.log("---------------------------------------------------");
 	//console.log("   topics contents:", topics);
@@ -52,9 +52,14 @@ const HomeRoute = ({ photos, topics }) => {
 
 	const toggleFavBadge = () => {
 		setIsFavPhotoExist(!isFavPhotoExist);
-		if (!selected) {setSelected(true); }
-
+		if (!selected) {
+			setSelected(true);
+		}
 	};
+	console.log("openModal", openModal);
+	console.log("openModal", typeof openModal);
+	console.log("closeModal", closeModal);
+	console.log("closeModal", typeof closeModal);
 
 	return (
 		<div className="home-route">
@@ -68,6 +73,8 @@ const HomeRoute = ({ photos, topics }) => {
 				favouritePhotos={favouritePhotos}
 				toggleFavourite={toggleFavourite}
 				toggleFavBadge={toggleFavBadge}
+				openModal={openModal}
+				closeModal={closeModal}
 			/>
 		</div>
 	);

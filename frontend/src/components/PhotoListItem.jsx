@@ -8,6 +8,8 @@ const PhotoListItem = ({
 	isFavourite,
 	toggleFavourite,
 	toggleFavBadge,
+	openModal,
+	closeModal
 }) => {
 	console.log("!!!!!! PHOTO LIST ITEM !!!!!! ");
 	console.log("---------------------------------------------------");
@@ -35,6 +37,12 @@ const PhotoListItem = ({
 	const { id, location, urls, user } = photo;
 	console.log(id);
 
+	const handleModal = () => { openModal(); }
+
+		console.log("openModal", openModal);
+		console.log("openModal", typeof openModal);
+		console.log("closeModal", closeModal);
+	console.log("closeModal", typeof closeModal);
 
 
 	return (
@@ -42,7 +50,7 @@ const PhotoListItem = ({
 			key={id}
 			className="photo-list__item "
 		>
-			<div>
+			<div onClick={handleModal}>
 				<PhotoFavButton
 					photoId={id}
 					isFavourite={isFavourite}
