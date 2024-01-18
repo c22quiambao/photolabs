@@ -4,10 +4,12 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-const TopicList = ({topics}) => {
-	console.log("!!!!!! TOP LIST !!!!!! ");
-	console.log("Is Array?", Array.isArray(topics));
-	console.log("Topics %%%%%% :", topics);
+const TopicList = ({ topics }) => {
+	console.log("!!!!!! TOPIC LIST !!!!!! ");
+	console.log("---------------------------------------------------");
+	console.log("   topics contents:", topics);
+	console.log("   Is passed topics an Array?", Array.isArray(topics));
+	console.log("   topics is TYPE OF:", typeof topics);
 
 	return (
 		<div className="top-nav-bar__topic-list">

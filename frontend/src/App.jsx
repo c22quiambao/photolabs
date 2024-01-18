@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute.jsx";
 import topics from "mocks/topics";
-import photos from "mocks/photos";
+import photos from "mocks/mockphotodata";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 	console.log("!AAAAAAAAAPPPPPPPPPP!");
+		console.log("---------------------------------------------------");
 	console.log("TYPE OF topics:", typeof topics);
 	console.log("Is Array?", Array.isArray(topics));
 	console.log("Topics:", topics);

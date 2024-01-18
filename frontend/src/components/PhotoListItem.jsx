@@ -3,10 +3,23 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = (props) => {
-	/* Insert React */
-	console.log("props", props);
-	const { id, location, urls, user } = props;
+const PhotoListItem = ({ photo, isFavourite, toggleFavourite }) => {
+	console.log("!!!!!! PHOTO LIST ITEM !!!!!! ");
+	console.log("---------------------------------------------------");
+	console.log("   photo contents:", photo);
+	console.log("   Is passed photo an Array?", Array.isArray(photo));
+	console.log("   photo is TYPE OF:", typeof photo);
+
+	console.log("   isFavourite contents:", isFavourite);
+	console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
+	console.log("   isFavourite is TYPE OF:", typeof isFavourite);
+
+	console.log("   isFavourite contents:", toggleFavourite);
+	console.log("   Is passed toggleFavourite an Array?", Array.isArray(toggleFavourite));
+	console.log("   toggleFavourite is TYPE OF:", typeof toggleFavourite);
+
+	const { id, location, urls, user } = photo;
+	console.log(id);
 
 	return (
 		<article
@@ -14,7 +27,11 @@ const PhotoListItem = (props) => {
 			className="photo-list__item "
 		>
 			<div>
-				<PhotoFavButton />
+				<PhotoFavButton
+					photoId={photo.id}
+					isFavourite={isFavourite}
+					toggleFavourite={toggleFavourite}
+				/>
 				<img
 					src={urls.regular}
 					alt={`Photo ${id}`}
