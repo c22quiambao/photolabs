@@ -3,7 +3,12 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, isFavourite, toggleFavourite }) => {
+const PhotoListItem = ({
+	photo,
+	isFavourite,
+	toggleFavourite,
+	toggleFavBadge,
+}) => {
 	console.log("!!!!!! PHOTO LIST ITEM !!!!!! ");
 	console.log("---------------------------------------------------");
 	console.log("   photo contents:", photo);
@@ -14,12 +19,23 @@ const PhotoListItem = ({ photo, isFavourite, toggleFavourite }) => {
 	console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
 	console.log("   isFavourite is TYPE OF:", typeof isFavourite);
 
-	console.log("   isFavourite contents:", toggleFavourite);
-	console.log("   Is passed toggleFavourite an Array?", Array.isArray(toggleFavourite));
+	//console.log("   isFavourite contents:", toggleFavourite);
+	console.log(
+		"   Is passed toggleFavourite an Array?",
+		Array.isArray(toggleFavourite)
+	);
 	console.log("   toggleFavourite is TYPE OF:", typeof toggleFavourite);
+
+	console.log(
+		"   Is passed toggleFavBadge an Array?",
+		Array.isArray(toggleFavBadge)
+	);
+	console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
 
 	const { id, location, urls, user } = photo;
 	console.log(id);
+
+
 
 	return (
 		<article
@@ -28,9 +44,10 @@ const PhotoListItem = ({ photo, isFavourite, toggleFavourite }) => {
 		>
 			<div>
 				<PhotoFavButton
-					photoId={photo.id}
+					photoId={id}
 					isFavourite={isFavourite}
 					toggleFavourite={toggleFavourite}
+					toggleFavBadge={toggleFavBadge}
 				/>
 				<img
 					src={urls.regular}

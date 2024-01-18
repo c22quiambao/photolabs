@@ -3,14 +3,23 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = ({ isFavPhotoExist,selected }) => {
+	console.log("!!!!!! FAV BADGE !!!!!! ");
+	//console.log("---------------------------------------------------");
+	console.log("isFavPhotoExist", isFavPhotoExist);
+	console.log("   isFavPhotoExist is TYPE OF :", typeof isFavPhotoExist);
+	console.log("selected", selected);
+	console.log("   selected is TYPE OF :", typeof selected);
 
-  console.log("FavBadge called?!!!!");
-  return (
-    <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist}/>
-    </div>
-  )
+
+	return (
+		<div className="fav-badge">
+			<FavIcon
+				displayAlert={!!isFavPhotoExist}
+				selected={selected}
+			/>
+		</div>
+	);
 };
 
 export default FavBadge;
