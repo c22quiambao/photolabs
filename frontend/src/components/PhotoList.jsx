@@ -10,6 +10,8 @@ const PhotoList = ({
 	toggleFavBadge,
 	openModal,
 	closeModal,
+	isModalOpen,
+	updateModal,
 }) => {
 	console.log("!!!!!! PHOTOLIST  !!!!!! ");
 	console.log("---------------------------------------------------");
@@ -37,13 +39,13 @@ const PhotoList = ({
 		Array.isArray(toggleFavBadge)
 	);
 	console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
-	console.log("openModal", openModal);
-	console.log("openModal", typeof openModal);
-	console.log("closeModal", closeModal);
-	console.log("closeModal", typeof closeModal);
+	//console.log("openModal", openModal);
+	console.log("openModal is a ", typeof openModal);
+	//console.log("closeModal", closeModal);
+	console.log("closeModal  is a ", typeof closeModal);
 
 	return (
-		<ul className="photo-list">
+		<ul className={isModalOpen ? "photo-details-modal__top-bar" : "photo-list"}>
 			{photos.map((photo) => {
 				console.log("   photo element of array photos being read", photo);
 				return (
@@ -55,6 +57,8 @@ const PhotoList = ({
 						toggleFavBadge={toggleFavBadge}
 						openModal={openModal}
 						closeModal={closeModal}
+						isModalOpen={isModalOpen}
+						updateModal={updateModal}
 					/>
 				);
 			})}

@@ -5,9 +5,19 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ photos, topics, openModal, closeModal }) => {
+const HomeRoute = ({
+	photos,
+	topics,
+	openModal,
+	closeModal,
+	favouritePhotos,
+	selected,
+	toggleFavourite,
+	toggleFavBadge,
+
+}) => {
 	console.log("!!!!!! HOME ROUTE!!!!!! ");
-	//console.log("---------------------------------------------------");
+	/*//console.log("---------------------------------------------------");
 	//console.log("   topics contents:", topics);
 	//console.log("   Is passed topics an Array?", Array.isArray(topics));
 	//console.log("   topics is TYPE OF:", typeof topics);
@@ -59,7 +69,7 @@ const HomeRoute = ({ photos, topics, openModal, closeModal }) => {
 	console.log("openModal", openModal);
 	console.log("openModal", typeof openModal);
 	console.log("closeModal", closeModal);
-	console.log("closeModal", typeof closeModal);
+	console.log("closeModal", typeof closeModal); */
 
 	return (
 		<div className="home-route">

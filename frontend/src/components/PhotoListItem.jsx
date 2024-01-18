@@ -9,7 +9,9 @@ const PhotoListItem = ({
 	toggleFavourite,
 	toggleFavBadge,
 	openModal,
-	closeModal
+	closeModal,
+	isModalOpen,
+	updateModal,
 }) => {
 	console.log("!!!!!! PHOTO LIST ITEM !!!!!! ");
 	console.log("---------------------------------------------------");
@@ -37,23 +39,25 @@ const PhotoListItem = ({
 	const { id, location, urls, user } = photo;
 	console.log(id);
 
-	const handleModal = () => {
-		openModal(photo);
-		console.log(photo);
-}
+	const handleModal = (event) => {
+		if (!isModalOpen) {
+			openModal(photo);
+		} else {
+			updateModal(photo);
+		}
+	};
 
-		console.log("openModal", openModal);
-		console.log("openModal", typeof openModal);
-		console.log("closeModal", closeModal);
+	console.log("openModal", openModal);
+	console.log("openModal", typeof openModal);
+	console.log("closeModal", closeModal);
 	console.log("closeModal", typeof closeModal);
 
-
 	return (
-		<article
+		<div
 			key={id}
-			className="photo-list__item "
+			className="photo-list__item"
 		>
-			<div onClick={handleModal}>
+			<div>
 				<PhotoFavButton
 					photoId={id}
 					isFavourite={isFavourite}
@@ -64,6 +68,7 @@ const PhotoListItem = ({
 					src={urls.regular}
 					alt={`Photo ${id}`}
 					className="photo-list__image"
+					onClick={handleModal}
 				/>
 			</div>
 			<div className="photo-list__user-details">
@@ -78,7 +83,7 @@ const PhotoListItem = ({
 			<div className="photo-list__user-location">
 				{location.city} {location.country}
 			</div>
-		</article>
+		</div>
 	);
 };
 
