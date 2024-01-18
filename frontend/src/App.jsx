@@ -19,13 +19,17 @@ const App = () => {
 	//console.log("photos:", photos);
 	//Handle modal
 	const [isModalOpen, setModalOpen] = useState(false);
+	const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-	const openModal = () => {
+	const openModal = (photo) => {
+		console.log("&^(*&^%(*&%(*^&% photo data receieved", photo);
 		setModalOpen(true);
+		setSelectedPhoto(photo);
 	};
 
 	const closeModal = () => {
 		setModalOpen(false);
+				setSelectedPhoto(null);
 	};
 
 	return (
@@ -36,7 +40,12 @@ const App = () => {
 				openModal={openModal}
 				closeModal={closeModal}
 			/>
-			{isModalOpen && <PhotoDetailsModal closeModal={closeModal} />}
+			{isModalOpen && (
+				<PhotoDetailsModal
+					photo={selectedPhoto}
+					closeModal={closeModal}
+				/>
+			)}
 		</div>
 	);
 };

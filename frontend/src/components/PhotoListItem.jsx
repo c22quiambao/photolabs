@@ -37,7 +37,10 @@ const PhotoListItem = ({
 	const { id, location, urls, user } = photo;
 	console.log(id);
 
-	const handleModal = () => { openModal(); }
+	const handleModal = () => {
+		openModal(photo);
+		console.log(photo);
+}
 
 		console.log("openModal", openModal);
 		console.log("openModal", typeof openModal);
