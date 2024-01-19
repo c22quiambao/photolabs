@@ -5,13 +5,13 @@ import "./App.scss";
 import HomeRoute from "routes/HomeRoute.jsx";
 import topics from "mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import photos from "mocks/mockphotodata";
+import photos from "mocks/photos";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 	console.log("!AAAAAAAAAPPPPPPPPPP!");
 	//console.log("---------------------------------------------------");
-	//console.log("   photos contents:", photos);
+	console.log("   photos contents:", photos);
 	//console.log("   Is passed photos an Array?", Array.isArray(photos));
 	//console.log("   photos is TYPE OF :", typeof photos);
 

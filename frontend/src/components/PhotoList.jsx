@@ -53,7 +53,7 @@ const PhotoList = ({
 	//console.log(">>>>>>>>>>>>>>>> isModalOpen  is a ", typeof isModalOpen);
 
 	return (
-		<ul className={isModalOpen ? "photo-details-modal__top-bar" : "photo-list"}>
+		<ul className="photo-list">
 			{photos.map((photo) => {
 				//console.log("   photo element of array photos being read", photo);
 

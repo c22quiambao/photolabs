@@ -45,22 +45,14 @@ const PhotoListItem = ({
 	//console.log(">>>>>>>>>>>>>>>> isModalOpen", isModalOpen);
 	//console.log(">>>>>>>>>>>>>>>> isModalOpen  is a ", typeof isModalOpen);
 
-	const { id, location, urls, user } = photo;
+	const { id, location, urls, user, similar_photos } = photo;
 	//console.log(id);
 
 	const handleModal = () => {
 		console.log("PHOTOLISTITEM - contents of photo", photo);
-		console.log(
-			"PHOTOLISTITEM   Pasing photo as an Array?",
-			Array.isArray(photo)
-		);
 		if (!isModalOpen) {
 			openModal(photo);
-		} else {
-			//closeModal();
-			//transfer updatemodal inside of closemodal
-			updateModal(photo);
-		}
+		};
 	};
 
 	return (
@@ -79,7 +71,7 @@ const PhotoListItem = ({
 					src={urls.regular}
 					alt={`Photo ${id}`}
 					className="photo-list__image"
-					onClick={handleModal}
+					onClick={isModalOpen ? false : handleModal}
 				/>
 			</div>
 			<div className="photo-list__user-details">

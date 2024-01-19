@@ -52,12 +52,12 @@ const PhotoDetailsModal = ({
 	//console.log("photoArray : ------------->", photoArray);
 	//console.log("   photoArray is TYPE OF :", typeof photoArray);
 	//console.log("   Is photoArray an Array?", Array.isArray(photoArray));
-	console.log("checking each single item passed");
-	console.log("selectedPhotoId :", selectedPhotoId);
-	console.log("selectedPhotoUrls :", selectedPhotoUrls);
-	console.log("selectedPhotoUser:", selectedPhotoUser);
-	console.log("selectedPhotoLoc :", selectedPhotoLoc);
-	console.log("selectedPhotoLoc:", selectedSimilarPhotos);
+	//console.log("checking each single item passed");
+	//console.log("selectedPhotoId :", selectedPhotoId);
+	//console.log("selectedPhotoUrls :", selectedPhotoUrls);
+	//console.log("selectedPhotoUser:", selectedPhotoUser);
+	//console.log("selectedPhotoLoc :", selectedPhotoLoc);
+	//console.log("selectedPhotoLoc:", selectedSimilarPhotos);
 
 	return (
 		<div
