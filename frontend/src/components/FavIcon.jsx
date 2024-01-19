@@ -1,16 +1,6 @@
 import React from "react";
 
 const FavIcon = ({ displayAlert, selected }) => {
-	console.log("!!!!!! FAVE ICON !!!!!! ");
-	console.log("---------------------------------------------------");
-	console.log("   displayAlert displayAlert : ", displayAlert);
-	console.log("   displayAlert is TYPE OF :", typeof displayAlert);
-	console.log("   FavIcon selected value : ", selected);
-	console.log("   selected is TYPE OF :", typeof selected);
-	//console.log(
-	//	"########################### END OF RENDER ##############################"
-	//);
-
 	return (
 		<svg
 			width="20"
