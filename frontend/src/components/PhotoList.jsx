@@ -11,6 +11,10 @@ const PhotoList = ({
 	isModalOpen,
 }) => {
 	console.log("Read PhotoList");
+	console.log("photo", photos);
+	console.log("favouritePhotos------>", favouritePhotos);
+	console.log("isModalOpen", isModalOpen);
+	//console.log("selectedPhoto", selectedPhoto);
 	return (
 		<ul className="photo-list">
 			{photos.map((photo) => {
@@ -23,10 +27,7 @@ const PhotoList = ({
 						isFavourite={favouritePhotos.includes(photo.id)}
 						updateFavourites={updateFavourites}
 						openModal={openModal}
-						//closeModal={closeModal}
 						isModalOpen={isModalOpen}
-						//updateModal={updateModal}
-						//toggleHeartNotif={toggleHeartNotif}
 					/>
 				);
 			})}
