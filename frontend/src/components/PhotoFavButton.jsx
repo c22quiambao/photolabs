@@ -6,41 +6,43 @@ import "../styles/PhotoFavButton.scss";
 function PhotoFavButton({
 	photoId,
 	isFavourite,
-	toggleFavourite,
-	toggleFavBadge,
+	updateFavourites,
+	//toggleHeartNotif,
 }) {
 	console.log("!!!!!! PHOTO FAV BUTTON !!!!!! ");
-
 	console.log("---------------------------------------------------");
-	console.log("   photoId contents:", photoId);
-	console.log("   Is passed id an Array?", Array.isArray(photoId));
-	console.log("   id is TYPE OF:", typeof photoId);
-
-	console.log("   isFavourite contents:", isFavourite);
-	console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
-	console.log("   isFavourite is TYPE OF:", typeof isFavourite);
+	//console.log("   photoId contents:", photoId);
+	//console.log("   Is passed id an Array?", Array.isArray(photoId));
+	//console.log("   id is TYPE OF:", typeof photoId);
+	//console.log("   isFavourite contents:", isFavourite);
+	//console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
+	//console.log("   isFavourite is TYPE OF:", typeof isFavourite);
 
 	//console.log("   toggleFavourite contents:", toggleFavourite);
-	console.log(
-		"   Is passed toggleFavourite an Array?",
-		Array.isArray(toggleFavourite)
-	);
-	console.log("   toggleFavourite is TYPE OF:", typeof toggleFavourite);
+	// console.log(
+	// 	"   Is passed toggleFavourite an Array?",
+	// 	Array.isArray(updateFavourites)
+	// );
+	// console.log("   toggleFavourite is TYPE OF:", typeof updateFavourites);
 
-	console.log(
-		"   Is passed toggleFavBadge an Array?",
-		Array.isArray(toggleFavBadge)
-	);
-	console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
+	// console.log(
+	// 	"   Is passed toggleFavBadge an Array?",
+	// 	Array.isArray(toggleHeartNotif)
+	// );
+	// console.log("   toggleFavBadge is TYPE OF:", typeof toggleHeartNotif);
 
-	const [selected, setSelected] = useState(isFavourite);
+	//state handler of photo's heart state
+	//const [selected, setSelected] = useState(isFavourite);
 	//console.log("original selected value", selected);
 
+	// handles what happens when heart icon is clicked on photo
 	const handleToggle = () => {
-		//console.log("!!!!!handleToggle selected!!!!!", selected);
-		setSelected(!selected);
-		toggleFavourite(photoId);
-		toggleFavBadge();
+		//updates list of favourites
+		updateFavourites(photoId);
+		//updates global heart notif
+		//toggleHeartNotif();
+		//changes photo's heart state
+		//setSelected(!selected);
 	};
 
 	return (
@@ -50,8 +52,7 @@ function PhotoFavButton({
 		>
 			<div className="photo-list__fav-icon-svg">
 				<FavIcon
-					selected={selected}
-					displayAlert={""}
+					selected={isFavourite}
 				/>
 			</div>
 		</div>

@@ -6,51 +6,62 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({
 	photo,
 	isFavourite,
-	toggleFavourite,
-	toggleFavBadge,
+	updateFavourites,
 	openModal,
 	closeModal,
-	isModalOpen,
 	updateModal,
+	isModalOpen,
+	//toggleHeartNotif,
+	//selected,
 }) => {
 	console.log("!!!!!! PHOTO LIST ITEM !!!!!! ");
 	console.log("---------------------------------------------------");
 	console.log("   photo contents:", photo);
-	console.log("   Is passed photo an Array?", Array.isArray(photo));
-	console.log("   photo is TYPE OF:", typeof photo);
+	//console.log("   Is passed photo an Array?", Array.isArray(photo));
+	//console.log("   photo is TYPE OF:", typeof photo);
 
-	console.log("   isFavourite contents:", isFavourite);
-	console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
-	console.log("   isFavourite is TYPE OF:", typeof isFavourite);
+	//console.log("   isFavourite contents:", isFavourite);
+	//console.log("   Is passed isFavourite an Array?", Array.isArray(isFavourite));
+	//console.log("   isFavourite is TYPE OF:", typeof isFavourite);
 
 	//console.log("   isFavourite contents:", toggleFavourite);
-	console.log(
-		"   Is passed toggleFavourite an Array?",
-		Array.isArray(toggleFavourite)
-	);
-	console.log("   toggleFavourite is TYPE OF:", typeof toggleFavourite);
+	//console.log(
+	//	"   Is passed toggleFavourite an Array?",
+	//	Array.isArray(toggleFavourite)
+	//);
+	//console.log("   toggleFavourite is TYPE OF:", typeof toggleFavourite);
 
-	console.log(
-		"   Is passed toggleFavBadge an Array?",
-		Array.isArray(toggleFavBadge)
-	);
-	console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
+	//console.log(
+	//	"   Is passed toggleFavBadge an Array?",
+	//	Array.isArray(toggleFavBadge)
+	//);
+	//console.log("   toggleFavBadge is TYPE OF:", typeof toggleFavBadge);
+
+	//console.log("openModal", openModal);
+	//console.log("openModal", typeof openModal);
+	//console.log("closeModal", closeModal);
+	//console.log("closeModal", typeof closeModal);
+	//console.log("updateModal  is a ", typeof updateModal);
+	//console.log(">>>>>>>>>>>>>>>> isModalOpen", isModalOpen);
+	//console.log(">>>>>>>>>>>>>>>> isModalOpen  is a ", typeof isModalOpen);
 
 	const { id, location, urls, user } = photo;
-	console.log(id);
+	//console.log(id);
 
-	const handleModal = (event) => {
+	const handleModal = () => {
+		console.log("PHOTOLISTITEM - contents of photo", photo);
+		console.log(
+			"PHOTOLISTITEM   Pasing photo as an Array?",
+			Array.isArray(photo)
+		);
 		if (!isModalOpen) {
 			openModal(photo);
 		} else {
+			//closeModal();
+			//transfer updatemodal inside of closemodal
 			updateModal(photo);
 		}
 	};
-
-	console.log("openModal", openModal);
-	console.log("openModal", typeof openModal);
-	console.log("closeModal", closeModal);
-	console.log("closeModal", typeof closeModal);
 
 	return (
 		<div
@@ -61,8 +72,8 @@ const PhotoListItem = ({
 				<PhotoFavButton
 					photoId={id}
 					isFavourite={isFavourite}
-					toggleFavourite={toggleFavourite}
-					toggleFavBadge={toggleFavBadge}
+					updateFavourites={updateFavourites}
+					//toggleHeartNotif={toggleHeartNotif}
 				/>
 				<img
 					src={urls.regular}

@@ -10,27 +10,32 @@ import photos from "mocks/mockphotodata";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 	console.log("!AAAAAAAAAPPPPPPPPPP!");
+	//console.log("---------------------------------------------------");
+	//console.log("   photos contents:", photos);
+	//console.log("   Is passed photos an Array?", Array.isArray(photos));
+	//console.log("   photos is TYPE OF :", typeof photos);
 
-	console.log("   photos contents:", photos);
-	console.log("   Is passed photos an Array?", Array.isArray(photos));
-	console.log("   photos is TYPE OF :", typeof photos);
+	//console.log("   favouritePhotos is a TYPE OF :", typeof favouritePhotos);
 
-	// State handling
+	//console.log(
+	//	"   setFavouritePhotos is a TYPE OF :",
+	//	typeof setFavouritePhotos
+	//);
+
+	////////
+	// State handling of Fave Photos list if there is any that is liked
+	////////
 	const [favouritePhotos, setFavouritePhotos] = useState([]);
-
-	console.log("   HOME ROUTE - favouritePhotos contents : ", favouritePhotos);
+	console.log("   favouritePhotos contents : ", favouritePhotos);
 	console.log(
 		"   Is favouritePhotos an Array?",
 		Array.isArray(favouritePhotos)
 	);
-	console.log("   favouritePhotos is a TYPE OF :", typeof favouritePhotos);
-
-	console.log(
-		"   setFavouritePhotos is a TYPE OF :",
-		typeof setFavouritePhotos
-	);
-	//Handles favourite photos globally
-	const toggleFavourite = (photoId) => {
+	////////
+	///* Handles favourite photos globally
+	////////
+	const updateFavourites = (photoId) => {
+		console.log("called updateFavourites ");
 		setFavouritePhotos((prevFavourites) => {
 			const isAlreadyFavourite = prevFavourites.includes(photoId);
 
@@ -47,61 +52,107 @@ const App = () => {
 		});
 	};
 
-	//Set state of FavBadge if there is a photo liked
-	const [isFavPhotoExist, setIsFavPhotoExist] = useState(favouritePhotos.count);
-	const [selected, setSelected] = useState(null);
+	////////
+	///* Handles STATE of FavBadge if there is a photo liked/disliked
+	///////
+	//const [isFavPhotoExist, setIsFavPhotoExist] = useState(
+	//	favouritePhotos.count > 0);
+	//		console.log("Initial value of isFavPhotoExist", isFavPhotoExist);
+	//// DO I NEED THIS?????
+	//const [hasNewFaves, setHasNewFaves] = useState(null);
 
-	const toggleFavBadge = () => {
-		setIsFavPhotoExist(!isFavPhotoExist);
-		if (!selected) {
-			setSelected(true);
-		}
-	};
+	////////
+	///* Handles favourite photos globally
+	///////
+	//const toggleHeartNotif = () => {
+	//			console.log("called toggleHeartNotif ");
+	//	console.log("isFavPhotoExist", isFavPhotoExist);
+	//	//checkif favouritephotos is <= 0
+	//	if (favouritePhotos > 0) {
+	//		setIsFavPhotoExist(true);
+	//				console.log("isFavPhotoExist", isFavPhotoExist);
+	//		setHasNewFaves(true);
+	//	} else {
+	//		setIsFavPhotoExist(false);
+	//				console.log("isFavPhotoExist", isFavPhotoExist);
+	//					setHasNewFaves(false);
+	//	};
 
+	//	};
 
-	//Handle modal
+	////////
+	///* Handles STATE of modal & selected photo array?/ Object?
+	///////
 	const [isModalOpen, setModalOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState(null);
+	const [selectedPhoto, setSelectedPhoto] = useState([]);
+	console.log("selectedPhoto is WHAAAAAT!!!!!!", selectedPhoto);
+	console.log("   Is passed photos an Array?", Array.isArray(selectedPhoto));
 
 	const openModal = (photo) => {
 		console.log("&^(*&^%(*&%(*^&% photo data receieved", photo);
+		console.log(
+			"OPEN MODAL   Is passed photos an Array?",
+			Array.isArray(photo)
+		);
 		setModalOpen(true);
 		setSelectedPhoto(photo);
 	};
 
 	const closeModal = () => {
 		setModalOpen(false);
-		setSelectedPhoto(null);
+		setSelectedPhoto([]);
 	};
 
 	const updateModal = (photo) => {
-		setSelectedPhoto(null);
-	setSelectedPhoto(photo);};
+		console.log("&^(*&^%(*&%(*^&% photo data receieved", photo);
+		console.log(
+			"UPDATE MODAL   Is passed photo an Array?",
+			Array.isArray(photo)
+		);
+		setModalOpen(false);
+		openModal(photo);
+		//setSelectedPhoto(null);
+		//setSelectedPhoto(photo);
+		//console.log("----------------", selectedPhoto);
+		//setSelectedPhoto(photo);
+	};
 
+	////////
+	///* JSX return
+	///////
 	return (
 		<div className="App">
 			<HomeRoute
 				topics={topics}
 				photos={photos}
+				favouritePhotos={favouritePhotos}
+				isFavPhotoExist={!!favouritePhotos.length}
+				updateFavourites={updateFavourites}
 				openModal={openModal}
 				closeModal={closeModal}
-				favouritePhotos={favouritePhotos}
-				selected={selected}
-				toggleFavourite={toggleFavourite}
-				toggleFavBadge={toggleFavBadge}
 				updateModal={updateModal}
+				isModalOpen={isModalOpen}
+				//selected={hasNewFaves}
+				//toggleHeartNotif={toggleHeartNotif}
 			/>
 			{isModalOpen && (
 				<PhotoDetailsModal
+					isModalOpen={isModalOpen}
 					photo={selectedPhoto}
 					closeModal={closeModal}
 					openModal={openModal}
-					toggleFavourite={toggleFavourite}
-					toggleFavBadge={toggleFavBadge}
 					favouritePhotos={favouritePhotos}
-					isModalOpen={isModalOpen}
+					isFavourite={!!favouritePhotos.includes(selectedPhoto.id)}
 					updateModal={updateModal}
-					isFavourite={favouritePhotos.includes(photos.id)}
+					updateFavourites={updateFavourites}
+					selectedPhotoId={selectedPhoto.id}
+					selectedPhotoUrls={selectedPhoto.urls}
+					selectedPhotoUser={selectedPhoto.user}
+					selectedPhotoLoc={selectedPhoto.location}
+					selectedSimilarPhotos={selectedPhoto.similarPhotos}
+					//isFavourite={favouritePhotos.includes(photos.id)}
+					//toggleFavourite={toggleFavourite}
+					//toggleFavBadge={toggleFavBadge}
 				/>
 			)}
 		</div>
