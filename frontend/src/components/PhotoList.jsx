@@ -10,6 +10,7 @@ const PhotoList = ({
 	openModal,
 	isModalOpen,
 }) => {
+	console.log("Read PhotoList");
 	return (
 		<ul className="photo-list">
 			{photos.map((photo) => {

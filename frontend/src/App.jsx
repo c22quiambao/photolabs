@@ -1,14 +1,15 @@
 //code for App.jsx
-import React, { useState } from "react";
+import React from "react";
 
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute.jsx";
-import topics from "mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import photos from "mocks/photos";
+import useApplicationData from "./hooks/useApplicationData.js";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+
+	/*
 	////////
 	// State handling of Fave Photos list if there is any that is liked
 	////////
@@ -44,6 +45,18 @@ const App = () => {
 		setModalOpen(false);
 		setSelectedPhoto([]);
 	};
+*/
+		console.log("App");
+	const { state, actions } = useApplicationData();
+	const { topics, photos, favouritePhotos, isModalOpen, selectedPhoto } = state;
+	const { updateFavourites, openModal, closeModal } = actions;
+
+	console.log("topics received :", topics);
+	console.log("photos", photos);
+	console.log("favouritePhotos", favouritePhotos);
+	console.log("isModalOpen", isModalOpen);
+		console.log("selectedPhoto", selectedPhoto);
+
 
 	////////
 	///* JSX return

@@ -1,5 +1,5 @@
 //code for HomeRoute.jsx
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
@@ -14,6 +14,7 @@ const HomeRoute = ({
 	isModalOpen,
 	openModal,
 }) => {
+		console.log("Read Home");
 	return (
 		<div className="home-route">
 			<TopNavigation

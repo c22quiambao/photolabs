@@ -1,6 +1,7 @@
 import React from "react";
 
 const FavIcon = ({ displayAlert, selected }) => {
+		console.log("Read FavIcon");
 	return (
 		<svg
 			width="20"

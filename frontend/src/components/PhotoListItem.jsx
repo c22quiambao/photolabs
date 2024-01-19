@@ -10,6 +10,7 @@ const PhotoListItem = ({
 	openModal,
 	isModalOpen,
 }) => {
+		console.log("Read PhotoListItem");
 	const { id, location, urls, user, similar_photos } = photo;
 
 	const handleModal = () => {
