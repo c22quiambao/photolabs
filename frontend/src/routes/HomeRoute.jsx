@@ -15,7 +15,6 @@ const HomeRoute = ({
 	openModal,
 	setSelectedTopic,
 }) => {
-
 	return (
 		<div className="home-route">
 			<TopNavigation
