@@ -15,6 +15,7 @@ const HomeRoute = ({
 	openModal,
 	setSelectedTopic,
 }) => {
+	//going to add side peek for fave photos
 	return (
 		<div className="home-route">
 			<TopNavigation
