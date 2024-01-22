@@ -51,8 +51,10 @@ const reducer = (state, action) => {
 				...state,
 				favouritePhotos: newFavourites,
 			};
+
 		case actionTypes.OPEN_MODAL:
 			return { ...state, isModalOpen: true };
+
 		case actionTypes.CLOSE_MODAL:
 			return {
 				...state,
@@ -61,16 +63,16 @@ const reducer = (state, action) => {
 				topics: initialState.topicData,
 				photos: initialState.photoData,
 			};
+
 		case actionTypes.SET_SELECTED_PHOTO:
 			return { ...state, selectedPhoto: action.payload };
+
 		default:
 			return state;
 	}
 };
 
 const useApplicationData = () => {
-	console.log("read useApplicationData");
-
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	//useEffect to fetch all photos and topics
@@ -95,9 +97,9 @@ const useApplicationData = () => {
 				console.error("Error fetching data from /api/topics:", error);
 			});
 	}, []);
-	// Fetch photos by topic selected
+
+	// Fetch photos by topic based on selected topic id
 	useEffect(() => {
-		// Fetch photos by topic based on selected topic id
 		if (state.selectedTopicId) {
 			fetch(`/api/topics/photos/${state.selectedTopicId}`)
 				.then((response) => response.json())
@@ -116,11 +118,12 @@ const useApplicationData = () => {
 		}
 	}, [state.selectedTopicId]);
 
-	// Action to update favourite photos
+	// Action to update selected topic id
 	const setSelectedTopic = function (topicId) {
 		dispatch({ type: actionTypes.SET_SELECTED_TOPIC, payload: topicId });
 	};
 
+	// Action to update favourite photos
 	const updateFavourites = (photoId) => {
 		dispatch({
 			type: actionTypes.UPDATE_FAVOURITE_PHOTOS,
