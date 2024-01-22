@@ -12,6 +12,8 @@ const initialState = {
 	photos,
 	photoData: [],
 	topicData: [],
+	photoByTopic: [],
+	selectedTopicId:null,
 };
 
 // set action types
@@ -22,6 +24,8 @@ const actionTypes = {
 	SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
 	SET_PHOTO_DATA: "SET_PHOTO_DATA",
 	SET_TOPIC_DATA: "SET_TOPIC_DATA",
+	GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
+	SET_SELECTED_TOPIC: "SET_SELECTED_TOPIC",
 };
 
 const reducer = (state, action) => {
@@ -31,6 +35,12 @@ const reducer = (state, action) => {
 
 		case "SET_TOPIC_DATA":
 			return { ...state, topicData: action.payload };
+
+		case "GET_PHOTOS_BY_TOPICS":
+			return { ...state, photoByTopic: action.payload };
+
+		case actionTypes.SET_SELECTED_TOPIC:
+			return { ...state, selectedTopicId: action.payload };
 
 		case actionTypes.UPDATE_FAVOURITE_PHOTOS:
 			const { favouritePhotos } = state;
@@ -65,13 +75,17 @@ const useApplicationData = () => {
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+//useEffect to fetch all photos and topics
 	useEffect(() => {
 		//fetching photo data
 		fetch("/api/photos")
 			.then((response) => response.json())
 			.then((data) =>
 				dispatch({ type: actionTypes.SET_PHOTO_DATA, payload: data })
-			);
+			)
+			.catch((error) => {
+				console.error("Error fetching data from /api/photos:", error);
+			});
 
 		// Fetch topics data
 		fetch("/api/topics")
@@ -83,8 +97,34 @@ const useApplicationData = () => {
 				console.error("Error fetching data from /api/topics:", error);
 			});
 	}, []);
+		// Fetch photos by topic selected
+useEffect(() => {
+	// Fetch photos by topic based on selected topic id
+	if (state.selectedTopicId) {
+		fetch(`/api/topics/photos/${state.selectedTopicId}`)
+			.then((response) => response.json())
+			.then((photoByTopic) =>
+				dispatch({
+					type: actionTypes.SET_PHOTO_DATA,
+					payload: photoByTopic,
+				})
+			)
+			.catch((error) => {
+				console.error(
+					`Error fetching data from /api/topics/photos/${state.selectedTopicId}`,
+					error
+				);
+			});
+	}
+}, [state.selectedTopicId]);
+
+
 
 	// Action to update favourite photos
+const setSelectedTopic = function (topicId) {
+	dispatch({ type: actionTypes.SET_SELECTED_TOPIC, payload: topicId });
+};
+
 	const updateFavourites = (photoId) => {
 		dispatch({
 			type: actionTypes.UPDATE_FAVOURITE_PHOTOS,
@@ -118,6 +158,7 @@ const useApplicationData = () => {
 			updateFavourites,
 			openModal,
 			closeModal,
+			setSelectedTopic,
 		},
 	};
 };

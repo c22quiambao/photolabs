@@ -4,8 +4,9 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-const TopicList = ({ topics }) => {
-		console.log("Read TopicList");
+const TopicList = ({ topics, setSelectedTopic }) => {
+	console.log("Read TopicList");
+	console.log(setSelectedTopic);
 
 	return (
 		<div className="top-nav-bar__topic-list">
@@ -14,6 +15,7 @@ const TopicList = ({ topics }) => {
 					<TopicListItem
 						key={topic.id}
 						{...topic}
+						setSelectedTopic={setSelectedTopic}
 					/>
 				);
 			})}

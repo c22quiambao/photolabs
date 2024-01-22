@@ -13,6 +13,7 @@ const HomeRoute = ({
 	updateFavourites,
 	isModalOpen,
 	openModal,
+	setSelectedTopic,
 }) => {
 	console.log("Read Home");
 
@@ -21,12 +22,14 @@ const HomeRoute = ({
 	console.log("favouritePhotos------>", favouritePhotos);
 	console.log("isModalOpen", isModalOpen);
 	//console.log("selectedPhoto", selectedPhoto);
+		console.log(setSelectedTopic);
 
 	return (
 		<div className="home-route">
 			<TopNavigation
 				topics={topics}
 				isFavPhotoExist={isFavPhotoExist}
+				setSelectedTopic={setSelectedTopic}
 			/>
 			<PhotoList
 				photos={photos}

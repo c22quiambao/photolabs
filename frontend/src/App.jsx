@@ -49,13 +49,14 @@ const App = () => {
 	const { state, actions } = useApplicationData();
 	const { topicData, photoData, favouritePhotos, isModalOpen, selectedPhoto } =
 		state;
-	const { updateFavourites, openModal, closeModal } = actions;
+	const { updateFavourites, openModal, closeModal, setSelectedTopic } = actions;
 
 	console.log("topics received :", topicData);
 	console.log("photos", photoData);
 	console.log("favouritePhotos------>", favouritePhotos);
 	console.log("isModalOpen", isModalOpen);
 	console.log("selectedPhoto", selectedPhoto);
+	console.log(setSelectedTopic);
 
 	////////
 	///* JSX return
@@ -70,6 +71,7 @@ const App = () => {
 				updateFavourites={updateFavourites}
 				openModal={openModal}
 				isModalOpen={isModalOpen}
+				setSelectedTopic={setSelectedTopic}
 			/>
 			{isModalOpen && (
 				<PhotoDetailsModal
