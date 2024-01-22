@@ -8,18 +8,14 @@ import useApplicationData from "./hooks/useApplicationData.js";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-	console.log("App");
+	// call on useApplicationData that handles all state management
 	const { state, actions } = useApplicationData();
+
+	//destruct state object
 	const { topicData, photoData, favouritePhotos, isModalOpen, selectedPhoto } =
 		state;
+	//destruct action object
 	const { updateFavourites, openModal, closeModal, setSelectedTopic } = actions;
-
-	console.log("topics received :", topicData);
-	console.log("photos", photoData);
-	console.log("favouritePhotos------>", favouritePhotos);
-	console.log("isModalOpen", isModalOpen);
-	console.log("selectedPhoto", selectedPhoto);
-	console.log(setSelectedTopic);
 
 	////////
 	///* JSX return
