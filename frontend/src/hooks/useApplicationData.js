@@ -8,12 +8,10 @@ const initialState = {
 	favouritePhotos: [],
 	isModalOpen: false,
 	selectedPhoto: [],
-	topics,
-	photos,
 	photoData: [],
 	topicData: [],
 	photoByTopic: [],
-	selectedTopicId:null,
+	selectedTopicId: null,
 };
 
 // set action types
@@ -75,7 +73,7 @@ const useApplicationData = () => {
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-//useEffect to fetch all photos and topics
+	//useEffect to fetch all photos and topics
 	useEffect(() => {
 		//fetching photo data
 		fetch("/api/photos")
@@ -97,33 +95,31 @@ const useApplicationData = () => {
 				console.error("Error fetching data from /api/topics:", error);
 			});
 	}, []);
-		// Fetch photos by topic selected
-useEffect(() => {
-	// Fetch photos by topic based on selected topic id
-	if (state.selectedTopicId) {
-		fetch(`/api/topics/photos/${state.selectedTopicId}`)
-			.then((response) => response.json())
-			.then((photoByTopic) =>
-				dispatch({
-					type: actionTypes.SET_PHOTO_DATA,
-					payload: photoByTopic,
-				})
-			)
-			.catch((error) => {
-				console.error(
-					`Error fetching data from /api/topics/photos/${state.selectedTopicId}`,
-					error
-				);
-			});
-	}
-}, [state.selectedTopicId]);
-
-
+	// Fetch photos by topic selected
+	useEffect(() => {
+		// Fetch photos by topic based on selected topic id
+		if (state.selectedTopicId) {
+			fetch(`/api/topics/photos/${state.selectedTopicId}`)
+				.then((response) => response.json())
+				.then((photoByTopic) =>
+					dispatch({
+						type: actionTypes.SET_PHOTO_DATA,
+						payload: photoByTopic,
+					})
+				)
+				.catch((error) => {
+					console.error(
+						`Error fetching data from /api/topics/photos/${state.selectedTopicId}`,
+						error
+					);
+				});
+		}
+	}, [state.selectedTopicId]);
 
 	// Action to update favourite photos
-const setSelectedTopic = function (topicId) {
-	dispatch({ type: actionTypes.SET_SELECTED_TOPIC, payload: topicId });
-};
+	const setSelectedTopic = function (topicId) {
+		dispatch({ type: actionTypes.SET_SELECTED_TOPIC, payload: topicId });
+	};
 
 	const updateFavourites = (photoId) => {
 		dispatch({

@@ -8,43 +8,6 @@ import useApplicationData from "./hooks/useApplicationData.js";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-	/*
-	////////
-	// State handling of Fave Photos list if there is any that is liked
-	////////
-	const [favouritePhotos, setFavouritePhotos] = useState([]);
-
-	////////
-	///* Handles favourite photos globally
-	////////
-	const updateFavourites = (photoId) => {
-		setFavouritePhotos((prevFavourites) => {
-			const isAlreadyFavourite = prevFavourites.includes(photoId);
-
-			const newFavourites = isAlreadyFavourite
-				? prevFavourites.filter((id) => id !== photoId)
-				: [...prevFavourites, photoId];
-
-			return newFavourites;
-		});
-	};
-
-	////////
-	///* Handles STATE of modal & selected photo array?/ Object?
-	///////
-	const [isModalOpen, setModalOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState([]);
-
-	const openModal = (photo) => {
-		setModalOpen(true);
-		setSelectedPhoto(photo);
-	};
-
-	const closeModal = () => {
-		setModalOpen(false);
-		setSelectedPhoto([]);
-	};
-*/
 	console.log("App");
 	const { state, actions } = useApplicationData();
 	const { topicData, photoData, favouritePhotos, isModalOpen, selectedPhoto } =

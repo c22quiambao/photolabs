@@ -21,8 +21,7 @@ const HomeRoute = ({
 	console.log("photo", photos);
 	console.log("favouritePhotos------>", favouritePhotos);
 	console.log("isModalOpen", isModalOpen);
-	//console.log("selectedPhoto", selectedPhoto);
-		console.log(setSelectedTopic);
+	console.log(setSelectedTopic);
 
 	return (
 		<div className="home-route">
