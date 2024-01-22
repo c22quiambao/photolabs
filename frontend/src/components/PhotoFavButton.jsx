@@ -9,7 +9,6 @@ function PhotoFavButton({ photoId, isFavourite, updateFavourites }) {
 		updateFavourites(photoId);
 	};
 
-	console.log("Read PhotoFavButton");
 	return (
 		<div
 			className="photo-list__fav-icon"

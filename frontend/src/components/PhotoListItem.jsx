@@ -10,16 +10,10 @@ const PhotoListItem = ({
 	openModal,
 	isModalOpen,
 }) => {
-	console.log("Read PhotoListItem");
-	console.log("photo", photo);
-	//console.log("favouritePhotos", favouritePhotos);
-	console.log("isModalOpen", isModalOpen);
-	//console.log("selectedPhoto", selectedPhoto);
-
+	//deconstruct photo object
 	const { id, location, urls, user, similar_photos } = photo;
 
 	const handleModal = () => {
-		console.log("HEEEEEEERRRRREEE!!!!!!", isModalOpen);
 		if (!isModalOpen) {
 			openModal(photo);
 		}

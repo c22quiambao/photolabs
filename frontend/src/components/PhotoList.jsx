@@ -10,16 +10,9 @@ const PhotoList = ({
 	openModal,
 	isModalOpen,
 }) => {
-	console.log("Read PhotoList");
-	console.log("photo", photos);
-	console.log("favouritePhotos------>", favouritePhotos);
-	console.log("isModalOpen", isModalOpen);
-	//console.log("selectedPhoto", selectedPhoto);
 	return (
 		<ul className="photo-list">
 			{photos.map((photo) => {
-				//console.log("   photo element of array photos being read", photo);
-
 				return (
 					<PhotoListItem
 						key={photo.id}
