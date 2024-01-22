@@ -15,13 +15,6 @@ const HomeRoute = ({
 	openModal,
 	setSelectedTopic,
 }) => {
-	console.log("Read Home");
-
-	console.log("HOME!!!!!");
-	console.log("photo", photos);
-	console.log("favouritePhotos------>", favouritePhotos);
-	console.log("isModalOpen", isModalOpen);
-	console.log(setSelectedTopic);
 
 	return (
 		<div className="home-route">
