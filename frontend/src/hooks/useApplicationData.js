@@ -28,13 +28,13 @@ const actionTypes = {
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		case "SET_PHOTO_DATA":
+		case actionTypes.SET_PHOTO_DATA:
 			return { ...state, photoData: action.payload };
 
-		case "SET_TOPIC_DATA":
+		case actionTypes.SET_TOPIC_DATA:
 			return { ...state, topicData: action.payload };
 
-		case "GET_PHOTOS_BY_TOPICS":
+		case actionTypes.GET_PHOTOS_BY_TOPICS:
 			return { ...state, photoByTopic: action.payload };
 
 		case actionTypes.SET_SELECTED_TOPIC:
