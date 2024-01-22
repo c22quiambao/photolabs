@@ -1,5 +1,5 @@
 // hooks/useApplicationData.js
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import topics from "mocks/topics";
 import photos from "mocks/photos";
 
@@ -10,6 +10,8 @@ const initialState = {
 	selectedPhoto: [],
 	topics,
 	photos,
+	photoData: [],
+	topicData: [],
 };
 
 // set action types
@@ -18,12 +20,20 @@ const actionTypes = {
 	OPEN_MODAL: "OPEN_MODAL",
 	CLOSE_MODAL: "CLOSE_MODAL",
 	SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
+	SET_PHOTO_DATA: "SET_PHOTO_DATA",
+	SET_TOPIC_DATA: "SET_TOPIC_DATA",
 };
 
 const reducer = (state, action) => {
 	switch (action.type) {
+		case "SET_PHOTO_DATA":
+			return { ...state, photoData: action.payload };
+
+		case "SET_TOPIC_DATA":
+			return { ...state, topicData: action.payload };
+
 		case actionTypes.UPDATE_FAVOURITE_PHOTOS:
-			const { favouritePhotos } = state; // Assuming that prevFavouritePhotos is in your state
+			const { favouritePhotos } = state;
 			const isAlreadyFavourite = favouritePhotos.includes(action.payload);
 			const newFavourites = isAlreadyFavourite
 				? favouritePhotos.filter((id) => id !== action.payload)
@@ -40,9 +50,8 @@ const reducer = (state, action) => {
 				...state,
 				isModalOpen: false,
 				selectedPhoto: null,
-				topics: initialState.topics, // Reset topics to initial state
-				photos: initialState.photos,
-				// Reset photos to initial state
+				topics: initialState.topicData,
+				photos: initialState.photoData,
 			};
 		case actionTypes.SET_SELECTED_PHOTO:
 			return { ...state, selectedPhoto: action.payload };
@@ -55,6 +64,25 @@ const useApplicationData = () => {
 	console.log("read useApplicationData");
 
 	const [state, dispatch] = useReducer(reducer, initialState);
+
+	useEffect(() => {
+		//fetching photo data
+		fetch("/api/photos")
+			.then((response) => response.json())
+			.then((data) =>
+				dispatch({ type: actionTypes.SET_PHOTO_DATA, payload: data })
+			);
+
+		// Fetch topics data
+		fetch("/api/topics")
+			.then((response) => response.json())
+			.then((topicData) =>
+				dispatch({ type: actionTypes.SET_TOPIC_DATA, payload: topicData })
+			)
+			.catch((error) => {
+				console.error("Error fetching data from /api/topics:", error);
+			});
+	}, []);
 
 	// Action to update favourite photos
 	const updateFavourites = (photoId) => {
@@ -82,20 +110,6 @@ const useApplicationData = () => {
 	const closeModal = () => {
 		dispatch({ type: actionTypes.CLOSE_MODAL });
 	};
-
-	// Initial state
-	//const [topics, setTopics] = useState(topics);
-	//const [photos, setPhotos] = useState(photos);
-	//const [favouritePhotos, setFavouritePhotos] = useState([]);
-	//const [isModalOpen, setModalOpen] = useState(false);
-	//const [selectedPhoto, setSelectedPhoto] = useState([]);
-
-	// Log the contents to the console
-	//console.log("useApplicationData topics", topics);
-	//	console.log("useApplicationData photos", photos);
-	//		console.log("useApplicationData favouritePhotos", favouritePhotos);
-	//			console.log("useApplicationData isModalOpen",isModalOpen);
-	//				console.log("useApplicationData selectedPhoto",selectedPhoto);
 
 	// Return the state and actions as an object
 	return {

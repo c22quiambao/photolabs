@@ -47,11 +47,12 @@ const App = () => {
 */
 	console.log("App");
 	const { state, actions } = useApplicationData();
-	const { topics, photos, favouritePhotos, isModalOpen, selectedPhoto } = state;
+	const { topicData, photoData, favouritePhotos, isModalOpen, selectedPhoto } =
+		state;
 	const { updateFavourites, openModal, closeModal } = actions;
 
-	console.log("topics received :", topics);
-	console.log("photos", photos);
+	console.log("topics received :", topicData);
+	console.log("photos", photoData);
 	console.log("favouritePhotos------>", favouritePhotos);
 	console.log("isModalOpen", isModalOpen);
 	console.log("selectedPhoto", selectedPhoto);
@@ -62,8 +63,8 @@ const App = () => {
 	return (
 		<div className="App">
 			<HomeRoute
-				topics={topics}
-				photos={photos}
+				topics={topicData}
+				photos={photoData}
 				favouritePhotos={favouritePhotos}
 				isFavPhotoExist={!!favouritePhotos.length}
 				updateFavourites={updateFavourites}
